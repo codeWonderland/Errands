@@ -1,1 +1,3 @@
 Backlog for Swift App:
+As a standard user, when I open the app, I want to see a list of tasks from the databse
+As a standard user, when I receive a new task, I want to get a notification
