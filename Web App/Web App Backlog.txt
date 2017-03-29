@@ -1,4 +1,0 @@
-Backlog for Web App:
-As a standard user, when I load the webpage, then I want to see a list of tasks
-As a standard user, when I type a message and press send, I want it to be added to the database
-As a person, when I walk in front of the motion sensor, I want to send a new task "Make sure you complete your tasks!"
