@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2EB8C41E8D73D0002D2130 /* ErrandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EB8C31E8D73D0002D2130 /* ErrandsTableViewController.swift */; };
+		4F2EB8C61E8D7B32002D2130 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EB8C51E8D7B32002D2130 /* MessageViewController.swift */; };
 		4FA1AB321E8A21E7009CD937 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1AB311E8A21E7009CD937 /* AppDelegate.swift */; };
 		4FA1AB341E8A21E7009CD937 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1AB331E8A21E7009CD937 /* ViewController.swift */; };
 		4FA1AB371E8A21E7009CD937 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FA1AB351E8A21E7009CD937 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F2EB8C31E8D73D0002D2130 /* ErrandsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsTableViewController.swift; sourceTree = "<group>"; };
+		4F2EB8C51E8D7B32002D2130 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		4FA1AB2E1E8A21E7009CD937 /* Errands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Errands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA1AB311E8A21E7009CD937 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FA1AB331E8A21E7009CD937 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				4FA1AB311E8A21E7009CD937 /* AppDelegate.swift */,
 				4FA1AB331E8A21E7009CD937 /* ViewController.swift */,
 				4FA1AB351E8A21E7009CD937 /* Main.storyboard */,
+				4F2EB8C51E8D7B32002D2130 /* MessageViewController.swift */,
+				4F2EB8C31E8D73D0002D2130 /* ErrandsTableViewController.swift */,
 				4FA1AB381E8A21E7009CD937 /* Assets.xcassets */,
 				4FA1AB3A1E8A21E7009CD937 /* LaunchScreen.storyboard */,
 				4FA1AB3D1E8A21E7009CD937 /* Info.plist */,
@@ -262,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2EB8C41E8D73D0002D2130 /* ErrandsTableViewController.swift in Sources */,
 				4FA1AB341E8A21E7009CD937 /* ViewController.swift in Sources */,
+				4F2EB8C61E8D7B32002D2130 /* MessageViewController.swift in Sources */,
 				4FA1AB321E8A21E7009CD937 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +522,7 @@
 				4FA1AB581E8A21E7009CD937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FA1AB591E8A21E7009CD937 /* Build configuration list for PBXNativeTarget "ErrandsTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +531,7 @@
 				4FA1AB5B1E8A21E7009CD937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FA1AB5C1E8A21E7009CD937 /* Build configuration list for PBXNativeTarget "ErrandsUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +540,7 @@
 				4FA1AB5E1E8A21E7009CD937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
