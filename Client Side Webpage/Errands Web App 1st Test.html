@@ -1,0 +1,380 @@
+<html>
+	<head>
+		<title>Chit Chat</title>
+		<!-- Include Bootstrap's CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+	</head>
+	<body onload="refresh()">
+		<div class="container">
+			<div style="font-size: 36px;" style="text-align: center">Champlain Chatter</div>
+<div class="row">
+				<div style="position:fixed"class="col-xs-3">
+					<a onclick="refresh()" class=" glyphicon glyphicon-refresh btn btn-lg btn-primary" href="#" role="button" style="position:relative;padding:17px;width:100px;height:55px;color:orange; border: thin solid orange">	</a>
+				</div>
+				<div class="col-xs-3"></div>
+				<div class="col-xs-6"></div>	
+			</div>	
+		
+			<!-- Input and button for posting to Chit Chat-->
+			<div class="row">
+				<div class="col-xs-2">
+				</div>
+				<div class="col-xs-8">
+					<div class="input-group input-group-lg">
+						<input id="postInput" type="text" class="form-control" placeholder="Add new Errand...">
+						<span class="input-group-btn">
+							<button onclick="pack_message()"style="padding-right:50px;padding-bottom:50px;border:transparent;background-color:transparent;width:100px;height:100px;color:blue;font-size:25px"class="btn btn-default glyphicon glyphicon-pencil" type="button"></button>
+						</span>
+					</div>
+				</div>
+				<div class="col-xs-2">
+				</div>
+			  </div>
+
+		<div class="row">
+			<div class="col-xs-4">
+			 <div class="jumbotron">
+				<div class="container">
+				<div class="row">
+				<div class="col-xs-4" style="left: 20px">
+					<div id="0" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+					<div id="20" class="col-xs" style="text-align: left">bbbbbbbb</div>
+					<div id="100" class="col-xs" style="text-align: left">cccccccc</div>
+					</div>
+					<div class="col-xs-4" style="right: 110px">
+						<button id="80" type="button" class="btn btn-success" onclick = "id_return_like(80)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "40"></div></button>
+						<button id="80" type="button" class="btn btn-danger" onclick = "id_return_dislike(80)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "60"></div></button>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div> 
+			
+			<div class="col-xs-4">
+			<div class="jumbotron">
+				<div class="container">
+				<div class="row">
+				<div class="col-xs-4" style="left: 20px">
+					<div id="1" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+					<div id="21" class="col-xs" style="text-align: left">eeeeeeeeeeeeeeeeee</div>
+					<div id="101" class="col-xs" style="text-align: left">ffffffffffffffff</div>
+					</div>
+					<div class="col-xs-4" style="right: 110px">
+					<button id="81" type="button" class="btn btn-success" value = "" onclick = "id_return_like(81)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "41"></div></button>
+					<button id="81" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(81)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "61"></div></button>
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<div class="col-xs-4">
+			<div class="jumbotron">
+				<div class="container">
+				<div class="row">
+				<div class="col-xs-4" style="left: 20px">
+					<div id="2" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word">gggggggggggggggggggggggggggggggggggggggg</div>
+					<div id="22" class="col-xs" style="text-align: left">hhhhhhhhhhhhhhhhhhhhhh</div>
+					<div id="102" class="col-xs" style="text-align: left">iiiiiiiiiiiiiiiiiiiii</div>
+					</div>
+					<div class="col-xs-4" style="right: 110px">
+					<button id="82" type="button" class="btn btn-success" value = "" onclick = "id_return_like(82)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "42"></div></button>
+					<button id="82" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(82)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "62"></div></button>
+					</div>
+					</div>
+				</div>
+			</div>		
+			</div>
+		</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="3" class="col-xs"></div>
+					<div id="23" class="col-xs" style="text-align: right"></div>
+					<div id="103" class="col-xs" style="text-align: right"></div>
+					<button id="83" type="button" class="btn btn-success" value = "" onclick = "id_return_like(83)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "43"></div></button>
+					<button id="83" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(83)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "63"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="4" class="col-xs"></div>
+					<div id="24" class="col-xs" style="text-align: right"></div>
+					<div id="104" class="col-xs" style="text-align: right"></div>
+					<button id="84" type="button" class="btn btn-success" value = "" onclick = "id_return_like(84)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "44"></div></button>
+					<button id="84" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(84)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "64"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="5" class="col-xs"></div>
+					<div id="25" class="col-xs" style="text-align: right"></div>
+					<div id="105" class="col-xs" style="text-align: right"></div>
+					<button id="85" type="button" class="btn btn-success" value = "" onclick = "id_return_like(85)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "45"></div></button>
+					<button id="85" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(85)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "65"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="6" class="col-xs"></div>
+					<div id="26" class="col-xs" style="text-align: right"></div>
+					<div id="106" class="col-xs" style="text-align: right"></div>
+					<button id="86" type="button" class="btn btn-success" value = "" onclick = "id_return_like(86)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "46"></div></button>
+					<button id="86" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(86)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "66"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="7" class="col-xs"></div>
+					<div id="27" class="col-xs" style="text-align: right"></div>
+					<div id="107" class="col-xs" style="text-align: right"></div>
+					<button id="87" type="button" class="btn btn-success" value = "" onclick = "id_return_like(87)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "47"></div></button>
+					<button id="87" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(87)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "67"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="8" class="col-xs"></div>
+					<div id="28" class="col-xs" style="text-align: right"></div>
+					<div id="108" class="col-xs" style="text-align: right"></div>
+					<button id="88" type="button" class="btn btn-success" value = "" onclick = "id_return_like(88)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "48"></div></button>
+					<button id="88" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(88)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "68"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="9" class="col-xs"></div>
+					<div id="29" class="col-xs" style="text-align: right"></div>
+					<div id="109" class="col-xs" style="text-align: right"></div>
+					<button id="89" type="button" class="btn btn-success" value = "" onclick = "id_return_like(89)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "49"></div></button>
+					<button id="89" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(89)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "69"></div></button>
+				</div>
+			</div>			
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="10" class="col-xs"></div>
+					<div id="30" class="col-xs" style="text-align: right"></div>
+					<div id="110" class="col-xs" style="text-align: right"></div>
+					<button id="90" type="button" class="btn btn-success" value = "" onclick = "id_return_like(90)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "50"></div></button>
+					<button id="90" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(90)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "70"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="11" class="col-xs"></div>
+					<div id="31" class="col-xs" style="text-align: right"></div>
+					<div id="111" class="col-xs" style="text-align: right"></div>
+					<button id="91" type="button" class="btn btn-success" value = "" onclick = "id_return_like(91)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "51"></div></button>
+					<button id="91" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(91)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "71"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="12" class="col-xs"></div>
+					<div id="32" class="col-xs" style="text-align: right"></div>
+					<div id="112" class="col-xs" style="text-align: right"></div>
+					<button id="92" type="button" class="btn btn-success" value = "" onclick = "id_return_like(92)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "52"></div></button>
+					<button id="92" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(92)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "72"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="13" class="col-xs"></div>
+					<div id="33" class="col-xs" style="text-align: right"></div>
+					<div id="113" class="col-xs" style="text-align: right"></div>
+					<button id="93" type="button" class="btn btn-success" value = "" onclick = "id_return_like(93)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "53"></div></button>
+					<button id="93" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(93)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "73"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="14" class="col-xs"></div>
+					<div id="34" class="col-xs" style="text-align: right"></div>
+					<div id="114" class="col-xs" style="text-align: right"></div>
+					<button id="94" type="button" class="btn btn-success" value = "" onclick = "id_return_like(94)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "54"></div></button>
+					<button id="94" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(94)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "74"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="15" class="col-xs"></div>
+					<div id="35" class="col-xs" style="text-align: right"></div>
+					<div id="115" class="col-xs" style="text-align: right"></div>
+					<button id="95" type="button" class="btn btn-success" value = "" onclick = "id_return_like(95)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "55"></div></button>
+					<button id="95" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(95)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "75"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="16" class="col-xs"></div>
+					<div id="36" class="col-xs" style="text-align: right"></div>
+					<div id="116" class="col-xs" style="text-align: right"></div>
+					<button id="96" type="button" class="btn btn-success" value = "" onclick = "id_return_like(96)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "56"></div></button>
+					<button id="96" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(96)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "76"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="17" class="col-xs"></div>
+					<div id="37" class="col-xs" style="text-align: right"></div>
+					<div id="117" class="col-xs" style="text-align: right"></div>
+					<button id="97" type="button" class="btn btn-success" value = "" onclick = "id_return_like(97)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "57"></div></button>
+					<button id="97" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(97)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "77"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="18" class="col-xs"></div>
+					<div id="38" class="col-xs" style="text-align: right"></div>
+					<div id="118" class="col-xs" style="text-align: right"></div>
+					<button id="98" type="button" class="btn btn-success" value = "" onclick = "id_return_like(98)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "58"></div></button>
+					<button id="98" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(98)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "78"></div></button>
+				</div>
+			</div>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<div id="19" class="col-xs"></div>
+					<div id="39" class="col-xs" style="text-align: right"></div>
+					<div id="119" class="col-xs" style="text-align: right"></div>
+					<button id="99" type="button" class="btn btn-success" value = "" onclick = "id_return_like(99)"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><div id= "59"></div></button>
+					<button id="99" type="button" class="btn btn-danger" value = "" onclick = "id_return_dislike(99)"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span><div id= "79"></div></button>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+    		
+    		// Assigns messages and id's to their elements
+			function chitchatFeed(feed, testStatus, jqXHR) {
+				console.log(feed.messages);
+				for(var i = 0; i < 20; i++){
+					document.getElementById(i).innerHTML = feed.messages[i].message;
+					document.getElementById(i + 20).innerHTML = "Client: " + feed.messages[i].client;
+					document.getElementById(i + 40).innerHTML = feed.messages[i].likes;
+					document.getElementById(i + 60).innerHTML = feed.messages[i].dislikes;
+					document.getElementById(i + 80).value = feed.messages[i]._id;
+					document.getElementById(i + 100).innerHTML = feed.messages[i].date;
+				}
+			}
+			
+			// Will load the latest feed of messages
+			// from the Chit Chat server via the callback
+			// function chitchatFeed()
+			function refresh() {
+				var chitchatURL = "https://www.stepoutnyc.com/chitchat";
+				$.ajax({
+				  url: chitchatURL,
+				  data: {key: "champlainrocks1878"},
+				  dataType: 'json',
+				  type: 'get',
+				  success: chitchatFeed,
+				  failure: function() {window.alert("Failed connecting to feed!");}
+				});
+			}
+			
+			// process the message response object
+			function message_response(response, testStatus, jqXHR) {
+				console.log(response);
+				if(response.code == 1){
+					refresh();
+				}
+				else{
+					window.alert("Error sending message");
+				}
+			}
+			
+			// Called to post a message from client
+			// to Chit Chat
+			// Calls message_response when the server responds
+			function send_message(message, client) {
+				var chitchatURL = "https://www.stepoutnyc.com/chitchat" + "?key=champlainrocks1878&message=" + message + "&client=" + client;
+				$.post(chitchatURL, {}, message_response);
+			}
+			
+			// process the like response object
+			function like_response(response, testStatus, jqXHR) {
+				console.log(response);
+				if(response.code == 1){
+					
+					refresh();
+				}
+				else{
+					window.alert("Error Liking Message");
+				}
+			}
+			
+			// Called to like messsage id
+			// Calls like_response when the server responds
+			function like(id) {
+				var chitchatURL = "https://www.stepoutnyc.com/chitchat/like/" + id;
+				$.ajax({
+				  url: chitchatURL,
+				  data: {key: "champlainrocks1878"},
+				  dataType: 'json',
+				  type: 'get',
+				  success: like_response,
+				  failure: function() { window.alert("Failed connecting to like!"); }
+				});
+			}
+			
+			// process the dislike response object
+			function dislike_response(response, testStatus, jqXHR) {
+                console.log(response);
+				if(response.code == 1){
+					
+					refresh();
+				}
+				else{
+					window.alert("Error Liking Message");
+				}
+			}
+			
+			// Called to dislike messsage id
+			// Calls dislike_response when the server responds
+			function dislike(id) {
+				var chitchatURL = "https://www.stepoutnyc.com/chitchat/dislike/" + id;
+				$.ajax({
+				  url: chitchatURL,
+				  data: {key: "champlainrocks1878"},
+				  dataType: 'json',
+				  type: 'get',
+				  success: dislike_response,
+				  failure: function() { window.alert("Failed connecting to dislike!"); }
+				});
+			}
+			
+			//Getting unique id form value for like
+			function id_return_like(id){
+				var value = document.getElementById(id).value
+				
+				like(value);
+			}
+			
+			// Getting unique id form value for Dislike
+			function id_return_dislike(id){
+				var value = document.getElementById(id).value
+				
+				dislike(value);
+			}
+		</script>
+	</body>
+</html>
+<!-- Bootstrap and Chit Chat template used for bases -->
