@@ -10,24 +10,53 @@ import UIKit
 
 class ErrandsTableViewController: UITableViewController {
 
-    
+    //array to hold errands objects, defined by the Message() struct at the bottom of this file
+    var errands = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        populateTasks()
+    }
+    
+    // MARK: - Table view data source
+    
+    /*
+     * Pre: there must be a running server at codewonderland.me:6789,
+     *      and there should be data there. There also needs to be a Message class and / or struct
+     * Post: populates the errands array with messages from the server
+     * Purpose: This method will clear the errands array and refill it with message items that 
+     *      have been collected from a series of json objects hosted on the errands server
+     */
+    func populateTasks() {
+        //defining where data is coming from
+        let myUrl = NSURL(string: "codewonderland.me:6789/api/tasks")
+        let request = NSMutableURLRequest(url:myUrl! as URL)
+        request.httpMethod = "GET"
+        
+        // Excute HTTP Request
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("responseString = \(String(describing: responseString))")
+        }
+        
+        task.resume()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -102,7 +131,7 @@ struct Message {
     var mTime: String
     var mUID: String
     
-    init(message: String, time: String, name: String, uid: String = NSUUID().uuidString) {
+    init(message: String, time: String, name: String, uid: String) {
         mMessage = message
         mName = name
         mTime = time
