@@ -5,13 +5,6 @@ var router = express.Router();
 
 var taskManager = new TaskManager();
 
-router.get('/testGET', function(req, res, next) {
-    var data = {};
-    data.test = "test response";
-    data.other = 10;
-    res.send(data);
-});
-
 router.get('/tasks', function(req, res, next) {
     res.send(taskManager.getTasks());
 });
