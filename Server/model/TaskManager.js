@@ -5,6 +5,7 @@ function TaskManager() {
 
 TaskManager.prototype.addTask = function(task) {
     this.tasks.append(task);
+    console.log(task);
 };
 
 TaskManager.prototype.deleteTask = function(uid) {
