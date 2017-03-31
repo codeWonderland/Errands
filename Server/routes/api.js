@@ -11,7 +11,7 @@ router.get('/tasks', function(req, res, next) {
 
 router.post('/addTask', function(req, res, next) {
     var task = req.body;
-    if (task.uid != undefined) { // assume task is valid
+    if (task.uid !== undefined) { // assume task is valid
         taskManager.addTask(task);
     }
     res.send("OK");
