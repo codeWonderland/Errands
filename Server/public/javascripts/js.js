@@ -3,7 +3,7 @@ function postRequest(path, data, success) {
     $.ajax({
         type: "POST",
         data: data,
-        url: "http://localhost:6789" + path,
+        url: "http://codewonderland.me:6789" + path,
         dataType: "JSON",
         success: function(response) {
             success(response);
