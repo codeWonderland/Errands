@@ -13,12 +13,10 @@ function postRequest(path, data, success) {
 
 $(document).ready(function() {
     postRequest("/api/addTask", {
-        task: {
-            message: "test",
-            author: "test author",
-            timeCreated: "testtimecreated",
-            uid: "testuid"
-        }
+        message: "test",
+        author: "test author",
+        timeCreated: "testtimecreated",
+        uid: "testuid"
     }, function(response) {
         console.log(response);
     });
