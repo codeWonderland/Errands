@@ -1,23 +1,23 @@
 
 function TaskManager() {
-    self.tasks = [];
+    this.tasks = [];
 }
 
 TaskManager.prototype.addTask = function(task) {
-    self.tasks.append(task);
+    this.tasks.append(task);
 };
 
 TaskManager.prototype.deleteTask = function(uid) {
-    for (var i = 0; i < self.tasks.length; i++) {
-        var task = self.tasks[i];
+    for (var i = 0; i < this.tasks.length; i++) {
+        var task = this.tasks[i];
         if (task.uid == uid) {
-            self.tasks.remove(task);
+            this.tasks.remove(task);
         }
     }
 };
 
 TaskManager.prototype.getTasks = function() {
-    return self.tasks;
+    return this.tasks;
 };
 
 module.exports = TaskManager;
