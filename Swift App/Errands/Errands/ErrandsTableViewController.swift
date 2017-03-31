@@ -100,10 +100,12 @@ struct Message {
     var mMessage: String
     var mName: String
     var mTime: String
+    var mUID: String
     
-    init(message: String, time: String, name: String = "Unknown") {
+    init(message: String, time: String, name: String, uid: String = NSUUID().uuidString) {
         mMessage = message
         mName = name
         mTime = time
+        mUID = uid
     }
 }
