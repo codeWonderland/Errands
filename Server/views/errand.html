@@ -74,7 +74,8 @@
 						success(response);
 					}
 				});
-				location.reload();				
+				location.reload();
+				refresh();				
 			}
 			
 			function addTask()
@@ -117,7 +118,7 @@
 		</script>
 	
 	
-	<body>
+	<body onload="refresh()">
 		<div class="container">
 			<div style="font-size: 36px" style="text-align: center">Errand</div>
 			
