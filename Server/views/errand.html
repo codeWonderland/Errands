@@ -7,115 +7,118 @@
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 		<!--<script src="../Server/public/javascripts/js.js"></script>-->	
-	</head>
-	
-	
-			<script>
-    		var HOST = "";
-			
-    		// Assigns messages and id's to their elements
-			function chitchatFeed(feed) {
-				console.log(feed);
+	</head>	
+		<script>
+		var HOST = "";
+		
+		// Assigns messages and id's to their elements
+		function errandFeed(feed) {
+			console.log(feed);
 
-
-				
-				for(var i = 0; i < feed.length; i++){
-					document.getElementById(i).innerHTML = feed[i].message;
-					document.getElementById(i + 20).innerHTML = "Author: " + feed[i].author;
-					document.getElementById(i + 80).value = feed[i].uid;
-					console.log(document.getElementById(i + 80).value);
-					document.getElementById(i + 100).innerHTML = feed[i].timeCreated;
-					//document.getElementById(i + 100).innerHTML = feed.messages[i].date;
+			for(var i = 0; i < feed.length; i++){
+				document.getElementById(i).innerHTML = feed[i].message;
+				document.getElementById(i + 20).innerHTML = "Author: " + feed[i].author;
+				document.getElementById(i + 80).value = feed[i].uid;
+				console.log(document.getElementById(i + 80).value);
+				document.getElementById(i + 100).innerHTML = feed[i].timeCreated;
+			}
+		}
+		
+		// Will load the latest feed of messages
+		// from the Errand server via the callback
+		// function errandFeed()
+		function postRequest(path, data, success) {
+			$.ajax({
+				type: "POST",
+				data: data,
+				url: HOST + path,
+				dataType: "JSON",
+				success: function(response) {
+					success(response);
 				}
-			}
-			
-			
-			// Will load the latest feed of messages
-			// from the Chit Chat server via the callback
-			// function chitchatFeed()
-			function postRequest(path, data, success) {
-				$.ajax({
-					type: "POST",
-					data: data,
-					url: HOST + path,
-					dataType: "JSON",
-					success: function(response) {
-						success(response);
-					}
-				});
-			}
-			
-			function getRequest(path, success) {
-				$.ajax({
-					type: "GET",
-					url: HOST + path,
-					success: function(response) {
-						success(response);
-					}
-				});
-			}
-			
-			function refresh(){
-					getRequest("/api/tasks", function(response){
-						chitchatFeed(response);
-					});
-			}
-
-			
-			function deleteTask(id)
-			{
-				var uid = {uid : document.getElementById(id).value};
-				$.ajax({
-					type: "POST",
-					data: uid,
-					url: HOST + '/api/deleteTask',
-					dataType: "JSON",
-					success: function(resonse) {
-						success(response);
-					}
-				});
-				location.reload();
-				refresh();				
-			}
-			
-			function addTask()
-			{
-				while (localStorage.getItem("user") == null) {
-					localStorage.setItem("user", prompt("Please provide a username: ", null));
+			});
+		}
+		
+		function getRequest(path, success) {
+			$.ajax({
+				type: "GET",
+				url: HOST + path,
+				success: function(response) {
+					success(response);
 				}
-				var input = document.getElementById("postInput").value;
-				
-				var d = new Date();
-				var timeStr = "";
-				
-				timeStr += d.getHours() + ":" + d.getMinutes() + " " + d.getMonth() + "/" + d.getDay() + "/" + d.getYear();
-				
-				console.log(input);
-				postRequest("/api/addTask", {
-					message : input,
-					author : localStorage.getItem("user"),
-					timeCreated : timeStr,
-					uid : guid()
-				}, function(response) {
-					console.log("Success");
-					}
-				),
-				refresh();
+			});
+		}
+		
+		function refresh(){
+				getRequest("/api/tasks", function(response){
+					errandFeed(response);
+				});
+		}
+
+		
+		function deleteTask(id)
+		{
+			var uid = {uid : document.getElementById(id).value};
+			$.ajax({
+				type: "POST",
+				data: uid,
+				url: HOST + '/api/deleteTask',
+				dataType: "JSON",
+				success: function(resonse) {
+					success(response);
+				}
+			});
+
+			location.reload();
+			refresh();				
+		}
+		
+
+		function addTask()
+		{
+			while (localStorage.getItem("user") == null) {
+				localStorage.setItem("user", prompt("Please provide a username: ", null));
 			}
+			var input = document.getElementById("postInput").value;
 			
-			function guid() {
-			  function s4() {
-				return Math.floor((1 + Math.random()) * 0x10000)
-				  .toString(16)
-				  .substring(1);
-			  }
-			  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-				s4() + '-' + s4() + s4() + s4();
+			var d = new Date();
+			var timeStr = "";
+			
+			var minutes = d.getMinutes();
+			var min = minutes.toString();
+			if(minutes < 10)
+			{
+				min = "0" + minutes; 
 			}
 
-			
+			var month = d.getMonth();
+			month += 1;
 
-		</script>
+			timeStr += d.getHours() + ":" + d.getMinutes() + " "	 + month + "/" + d.getFullYear();
+			
+			console.log(input);
+			postRequest("/api/addTask", {
+				message : input,
+				author : localStorage.getItem("user"),
+				timeCreated : timeStr,
+				uid : guid()
+			}, function(response) {
+				console.log("Success");
+				}
+			),
+			refresh();
+		}
+		
+		function guid() {
+		  function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+			  .toString(16)
+			  .substring(1);
+		  }
+		  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+			s4() + '-' + s4() + s4() + s4();
+		}
+	</script>
 	
 	
 	<body onload="refresh()">
@@ -130,7 +133,7 @@
 				<div class="col-xs-6"></div>	
 			</div>	
 		
-			<!-- Input and button for posting to Chit Chat-->
+			<!-- Input and button for posting to Errand-->
 			<div class="row">
 				<div class="col-xs-2"></div>
 
@@ -152,8 +155,8 @@
 							<div class="row">
 								<div class="col-xs-4" style="left: 20px">
 									<div id="0" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-									<div id="20" class="col-xs" style="text-align: left"></div>
-									<div id="100" class="col-xs" style="text-align: left"></div>
+									<div id="20" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+									<div id="100" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 								</div>
 								
 								<div class="col-xs-4" style="right: 110px">
@@ -170,8 +173,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left: 20px">
 								<div id="1" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="21" class="col-xs" style="text-align: left"></div>
-								<div id="101" class="col-xs" style="text-align: left"></div>
+								<div id="21" class="col-xs" style="text-align: left;width: 230px; word-wrap: break-word"></div>
+								<div id="101" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 							
 							<div class="col-xs-4" style="right: 110px">
@@ -188,8 +191,8 @@
 							<div class="row">
 								<div class="col-xs-4" style="left: 20px">
 									<div id="2" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-									<div id="22" class="col-xs" style="text-align: left"></div>
-									<div id="102" class="col-xs" style="text-align: left"></div>
+									<div id="22" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+									<div id="102" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 								</div>
 
 								<div class="col-xs-4" style="right: 110px">
@@ -210,8 +213,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="3" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="23" class="col-xs" style="text-align: left "></div>
-								<div id="103" class="col-xs" style="text-align: left"></div>
+								<div id="23" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word "></div>
+								<div id="103" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -229,8 +232,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="4" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="24" class="col-xs" style="text-align: left "></div>
-								<div id="104" class="col-xs" style="text-align: left"></div>
+								<div id="24" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+								<div id="104" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -247,8 +250,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="5" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="25" class="col-xs" style="text-align: left "></div>
-								<div id="105" class="col-xs" style="text-align: left"></div>
+								<div id="25" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word "></div>
+								<div id="105" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -268,8 +271,8 @@
 							<div class="row">
 								<div class="col-xs-4" style="left: 20px">
 									<div id="6" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-									<div id="26" class="col-xs" style="text-align: left"></div>
-									<div id="106" class="col-xs" style="text-align: left"></div>
+									<div id="26" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+									<div id="106" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 								</div>
 								
 								<div class="col-xs-4" style="right: 110px">
@@ -286,8 +289,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left: 20px">
 								<div id="7" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="27" class="col-xs" style="text-align: left"></div>
-								<div id="107" class="col-xs" style="text-align: left"></div>
+								<div id="27" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+								<div id="107" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 							
 							<div class="col-xs-4" style="right: 110px">
@@ -304,8 +307,8 @@
 							<div class="row">
 								<div class="col-xs-4" style="left: 20px">
 									<div id="8" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-									<div id="28" class="col-xs" style="text-align: left"></div>
-									<div id="108" class="col-xs" style="text-align: left"></div>
+									<div id="28" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+									<div id="108" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 								</div>
 
 								<div class="col-xs-4" style="right: 110px">
@@ -326,8 +329,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="9" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="29" class="col-xs" style="text-align: left "></div>
-								<div id="109" class="col-xs" style="text-align: left"></div>
+								<div id="29" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
+								<div id="109" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -344,8 +347,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="10" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="30" class="col-xs" style="text-align: left "></div>
-								<div id="110" class="col-xs" style="text-align: left"></div>
+								<div id="30" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word "></div>
+								<div id="110" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -363,8 +366,8 @@
 						<div class="row">
 							<div class="col-xs-4" style="left:20px">
 								<div id="11" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
-								<div id="31" class="col-xs" style="text-align: left "></div>
-								<div id="111" class="col-xs" style="text-align: left"></div>
+								<div id="31" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word "></div>
+								<div id="111" class="col-xs" style="text-align: left; width: 230px; word-wrap: break-word"></div>
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
@@ -379,4 +382,3 @@
 	</div>
 	</body>
 </html>
-<!-- Bootstrap and Chit Chat template used for bases -->
