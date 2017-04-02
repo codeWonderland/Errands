@@ -1,0 +1,44 @@
+<!-- This is a template for the Chit Chat project. Some functions
+	for connecting to the Chit Chat server have already been provided
+	for you. Be sure to provide them with the proper parameters when
+	using them. Be sure to properly define their callbacks. -->
+
+<html>
+<head>
+    <!--The basis for this project was made from bootstrap http://getbootstrap.com/examples/starter-template/-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Alice Easter">
+    <title>Chit Chat</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="../css/starter-template.css" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+
+</head>
+<!--Background from  http://i.stack.imgur.com/IehB7.png-->
+<body background="background.png">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div id="container">
+        <div class="navbar-header">
+            <p class="navbar-brand">Chit Chat</p>
+        </div>
+    </div>
+</nav>
+<br/><br/>
+<!-- DEFINE YOUR USER INTERFACE FOR YOUR CHIT CHAT CLIENT HERE. -->
+<input type="text" id="message" /> <br/> <br/>
+<button class="btn btn-primary" onclick="processMessage()">Send</button>
+<button class="btn btn-primary" onclick="refresh()">Refresh</button>
+<button class="btn btn-primary" onclick="clearName()">Set Name</button>
+<div id="feed"></div>
+<br/>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
