@@ -11,12 +11,17 @@ import UIKit
 class ErrandsTableViewController: UITableViewController {
 
     //array to hold errands objects, defined by the Message() struct at the bottom of this file
-    var errands = [Message]()
+    private var errands = [Message]()
+
+    func loadData() {
+        self.populateTasks()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.loadData()
 
-        populateTasks()
     }
     
     // MARK: - Table view data source
@@ -30,7 +35,7 @@ class ErrandsTableViewController: UITableViewController {
      */
     func populateTasks() {
         //defining where data is coming from
-        let myUrl = NSURL(string: "codewonderland.me:6789/api/tasks")
+        let myUrl = NSURL(string: "http://codewonderland.me:6789/api/tasks")
         let request = NSMutableURLRequest(url:myUrl! as URL)
         request.httpMethod = "GET"
         
@@ -45,12 +50,29 @@ class ErrandsTableViewController: UITableViewController {
                 return
             }
             
-            // Print out response string
+            //Parse json
+            do {
+                var tempMessage: Message
+                if let data = data,
+                    let json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]] {
+                        for currentMessage in json {
+                            tempMessage = Message(message: currentMessage["message"] as! String, name: currentMessage["author"] as! String, time: currentMessage["timeCreated"] as! String, uid: currentMessage["uid"] as! String)
+                            self.errands.append(tempMessage)
+                        }
+                }
+            } catch {
+                print("Error deserializing JSON: \(error)")
+            }
+            
+            setNeedsDisplay();
+            /*// Print out response string
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("responseString = \(String(describing: responseString))")
+            print("responseString = \(String(describing: responseString))")*/
         }
-        
+
+
         task.resume()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,18 +87,32 @@ class ErrandsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.errands.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "ErrandsTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ErrandsTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ErrandsTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        let errand = errands[indexPath.row]
+        print("hello")
+        
+        cell.messageView.text = errand.mMessage
+        cell.authorView.text = errand.mName
+        cell.timeView.text = errand.mTime
+        cell.uid = errand.mUID
+        
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -131,7 +167,7 @@ struct Message {
     var mTime: String
     var mUID: String
     
-    init(message: String, time: String, name: String, uid: String) {
+    init(message: String, name: String, time: String, uid: String) {
         mMessage = message
         mName = name
         mTime = time
