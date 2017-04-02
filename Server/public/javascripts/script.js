@@ -7,6 +7,30 @@ $(document).ready(function() {
     refresh();
 });
 
+function errandsFeed(feed, testStatus, jqXHR) {
+    console.log(feed);
+    var feedDiv = document.getElementById("feed");
+    var feedHTML = "";
+    //creating individual div elements for each item in feed
+    for(var i = 0; i < feed.length; i++) {
+        feedHTML +=
+            '<br/>' +
+            '<div class="feedItem">' +
+            '<br/><br/>' +
+            '<h5>' + feed[i].author + '</h5>' +
+            '<br/>' +
+            '<h1>' + feed[i].message + '</h1>' +
+            '<br/>' +
+            '<h5>' + feed[i].timeCreated + '</h5>' +
+            '<br/>' +
+            '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' + +
+                '</div>';
+    }
+    feedDiv.innerHTML = feedHTML;
+
+    console.log(feed);
+}
+
 //Determines whether or not user has username and if not prompts for one
 function processMessage() {
     //localStorage stuff was learned from the textbook
@@ -25,38 +49,10 @@ function clearName() {
     localStorage.setItem("user" , prompt("Please provide a username: ", null));
 }
 
-// DEFINE YOUR HELPER FUNCTIONS HERE
-
-// Takes a feed, which is an object parsed from JSON
-// and interprets its individual items so that
-// they can be displayed on screen
-function errandsFeed(feed, testStatus, jqXHR) {
-    console.log(feed);
-    var feedDiv = document.getElementById("feed");
-    var feedHTML = "";
-    //creating individual div elements for each item in feed
-    for(var i = 0; i < feed.length; i++) {
-        feedHTML +=
-            '<br/>' +
-            '<div class="feedItem">' +
-                '<br/><br/>' +
-                '<h5>' + feed[i].author + '</h5>' +
-                '<br/>' +
-                '<h1>' + feed[i].message + '</h1>' +
-                '<br/>' +
-                '<h5>' + feed[i].timeCreated + '</h5>' +
-                '<br/>' +
-                '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' + +
-            '</div>';
-    }
-    feedDiv.innerHTML = feedHTML;
-
-    console.log(feed);
-}
 
 function refresh(){
     getRequest("/api/tasks", function(response){
-        chitchatFeed(response);
+        errandsFeed(response);
     });
 }
 
