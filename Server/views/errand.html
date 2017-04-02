@@ -74,11 +74,14 @@
 						success(response);
 					}
 				});
-				
+				location.reload();				
 			}
 			
 			function addTask()
 			{
+				while (localStorage.getItem("user") == null) {
+					localStorage.setItem("user", prompt("Please provide a username: ", null));
+				}
 				var input = document.getElementById("postInput").value;
 				
 				var d = new Date();
@@ -89,7 +92,7 @@
 				console.log(input);
 				postRequest("/api/addTask", {
 					message : input,
-					author : "Dickwad",
+					author : localStorage.getItem("user"),
 					timeCreated : timeStr,
 					uid : guid()
 				}, function(response) {
@@ -153,9 +156,7 @@
 								</div>
 								
 								<div class="col-xs-4" style="right: 110px">
-									<button id="80" type="button" class="btn btn-success" onclick = "deleteTask(80)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "40"></div></button>
-									
-									<button id="80" type="button" class="btn btn-danger" onclick = "deleteTask(80)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "60"></div></button>
+									<button id="80" type="button" class="btn btn-primary" onclick = "deleteTask(80)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "40"></div></button>
 								</div>
 							</div>
 						</div>
@@ -173,9 +174,7 @@
 							</div>
 							
 							<div class="col-xs-4" style="right: 110px">
-								<button id="81" type="button" class="btn btn-success" value = "" onclick = "deleteTask(81)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "41"></div></button>
-								
-								<button id="81" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(81)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "61"></div></button>
+								<button id="81" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(81)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "41"></div></button>	
 							</div>
 						</div>
 					</div>
@@ -193,9 +192,7 @@
 								</div>
 
 								<div class="col-xs-4" style="right: 110px">
-									<button id="82" type="button" class="btn btn-success" value = "" onclick = "deleteTask(82)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "42"></div></button>
-
-									<button id="82" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(82)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "62"></div></button>
+									<button id="82" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(82)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "42"></div></button>
 								</div>
 							</div>
 						</div>
@@ -217,9 +214,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="83" type="button" class="btn btn-success" value = "" onclick = "deleteTask(83)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "43"></div></button>
-								
-								<button id="83" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(83)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "63"></div></button>
+								<button id="83" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(83)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "43"></div></button>
 							</div>
 						</div>
 					</div>
@@ -238,9 +233,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="84" type="button" class="btn btn-success" value = "" onclick = "deleteTask(84)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "44"></div></button>
-								
-								<button id="84" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(84)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "64"></div></button>
+								<button id="84" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(84)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "44"></div></button>
 							</div>
 						</div>
 					</div>
@@ -258,9 +251,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="85" type="button" class="btn btn-success" value = "" onclick = "deleteTask(85)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "45"></div></button>
-								
-								<button id="85" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(85)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "65"></div></button>
+								<button id="85" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(85)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "45"></div></button>
 							</div>
 						</div>
 					</div>
@@ -281,9 +272,7 @@
 								</div>
 								
 								<div class="col-xs-4" style="right: 110px">
-									<button id="86" type="button" class="btn btn-success" onclick = "deleteTask(86)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "46"></div></button>
-									
-									<button id="86" type="button" class="btn btn-danger" onclick = "deleteTask(86)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "66"></div></button>
+									<button id="86" type="button" class="btn btn-primary" onclick = "deleteTask(86)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "46"></div></button>
 								</div>
 							</div>
 						</div>
@@ -301,9 +290,7 @@
 							</div>
 							
 							<div class="col-xs-4" style="right: 110px">
-								<button id="87" type="button" class="btn btn-success" value = "" onclick = "deleteTask(87)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "47"></div></button>
-								
-								<button id="87" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(87)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "67"></div></button>
+								<button id="87" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(87)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "47"></div></button>
 							</div>
 						</div>
 					</div>
@@ -321,9 +308,7 @@
 								</div>
 
 								<div class="col-xs-4" style="right: 110px">
-									<button id="88" type="button" class="btn btn-success" value = "" onclick = "deleteTask(88)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "48"></div></button>
-
-									<button id="88" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(88)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "68"></div></button>
+									<button id="88" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(88)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "48"></div></button>
 								</div>
 							</div>
 						</div>
@@ -345,9 +330,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="89" type="button" class="btn btn-success" value = "" onclick = "deleteTask(89)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "49"></div></button>
-								
-								<button id="89" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(89)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "69"></div></button>
+								<button id="89" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(89)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "49"></div></button>
 							</div>
 						</div>
 					</div>
@@ -365,9 +348,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="90" type="button" class="btn btn-success" value = "" onclick = "deleteTask(90)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "50"></div></button>
-								
-								<button id="90" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(90)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "70"></div></button>
+								<button id="90" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(90)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "50"></div></button>
 							</div>
 						</div>
 					</div>
@@ -386,9 +367,7 @@
 							</div>
 
 							<div class="col-xs-4" style="right:110px">
-								<button id="91" type="button" class="btn btn-success" value = "" onclick = "deleteTask(91)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "51"></div></button>
-								
-								<button id="91" type="button" class="btn btn-danger" value = "" onclick = "deleteTask(91)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><div id= "71"></div></button>
+								<button id="91" type="button" class="btn btn-primary" value = "" onclick = "deleteTask(91)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><div id= "51"></div></button>
 							</div>
 						</div>
 					</div>
