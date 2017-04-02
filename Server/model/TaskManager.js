@@ -11,7 +11,7 @@ TaskManager.prototype.deleteTask = function(uid) {
     for (var i = 0; i < this.tasks.length; i++) {
         var task = this.tasks[i];
         if (task.uid == uid) {
-            this.tasks.splice(task);
+            this.tasks.splice(i, 1);
         }
     }
 };
