@@ -16,15 +16,15 @@ function errandsFeed(feed, testStatus, jqXHR) {
         feedHTML +=
             '<br/>' +
             '<div class="feedItem">' +
-            '<br/><br/>' +
-            '<h5>' + feed[i].author + '</h5>' +
-            '<br/>' +
-            '<h1>' + feed[i].message + '</h1>' +
-            '<br/>' +
-            '<h5>' + feed[i].timeCreated + '</h5>' +
-            '<br/>' +
-            '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' + +
-                '</div>';
+                '<br/><br/>' +
+                '<h5>' + feed[i].author + '</h5>' +
+                '<br/>' +
+                '<h1>' + feed[i].message + '</h1>' +
+                '<br/>' +
+                '<h5>' + feed[i].timeCreated + '</h5>' +
+                '<br/>' +
+                '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' +
+            '</div>';
     }
     feedDiv.innerHTML = feedHTML;
 
@@ -80,7 +80,7 @@ function getRequest(path, success) {
 
 function deleteTask(id)
 {
-    var uid = {uid : document.getElementById(id).value};
+    var uid = {uid : id};
     $.ajax({
         type: "POST",
         data: uid,
