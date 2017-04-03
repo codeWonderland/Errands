@@ -49,6 +49,11 @@ function clearName() {
     localStorage.setItem("user" , prompt("Please provide a username: ", null));
 }
 
+function search() {
+    if(event.keyCode == 13) {
+        processMessage();
+    }
+}
 
 function refresh(){
     getRequest("/api/tasks", function(response){
