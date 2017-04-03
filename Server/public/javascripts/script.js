@@ -12,7 +12,7 @@ function errandsFeed(feed, testStatus, jqXHR) {
     var feedDiv = document.getElementById("feed");
     var feedHTML = "";
     //creating individual div elements for each item in feed
-    for(var i = 0; i < feed.length; i++) {
+    for(var i = feed.length - 1; i > -1; i--) {
         feedHTML +=
             '<br/>' +
             '<div class="feedItem">' +
