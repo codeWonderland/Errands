@@ -11,20 +11,25 @@ function errandsFeed(feed, testStatus, jqXHR) {
     console.log(feed);
     var feedDiv = document.getElementById("feed");
     var feedHTML = "";
+    while(localStorage.getItem("user") == null) {
+        localStorage.setItem("user" , prompt("Please provide a username: ", null));
+    }
     //creating individual div elements for each item in feed
     for(var i = feed.length - 1; i > -1; i--) {
-        feedHTML +=
-            '<br/>' +
-            '<div class="feedItem">' +
-                '<br/><br/>' +
-                '<h5>' + feed[i].author + '</h5>' +
+        if(feed[i].author == localStorage.getItem("user")) {
+            feedHTML +=
                 '<br/>' +
-                '<h1>' + feed[i].message + '</h1>' +
-                '<br/>' +
-                '<h5>' + feed[i].timeCreated + '</h5>' +
-                '<br/>' +
-                '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' +
-            '</div>';
+                '<div class="feedItem">' +
+                    '<br/><br/>' +
+                    '<h5>' + feed[i].author + '</h5>' +
+                    '<br/>' +
+                    '<h1>' + feed[i].message + '</h1>' +
+                    '<br/>' +
+                    '<h5>' + feed[i].timeCreated + '</h5>' +
+                    '<br/>' +
+                    '<button class="btn btn-success" onclick="deleteTask(\'' + feed[i].uid + '\')">Complete!</button>' +
+                '</div>';
+        }
     }
     feedDiv.innerHTML = feedHTML;
 
@@ -47,6 +52,7 @@ function processMessage() {
 function clearName() {
     localStorage.clear();
     localStorage.setItem("user" , prompt("Please provide a username: ", null));
+    refresh();
 }
 
 function search() {
