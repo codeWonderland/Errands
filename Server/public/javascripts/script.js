@@ -110,7 +110,7 @@ function addTask(message, client)
     var d = new Date();
     var timeStr = "";
 
-    timeStr += d.getHours() + ":" + d.getMinutes() + " " + (d.getMonth() + 1) + "/" + (d.getDate()) + "/" + (d.getFullYear());
+    timeStr += d.getHours() + ":" + (d.getMinutes() > 9 ? d.getMinutes() : "0" + d.getMinutes()) + " " + (d.getMonth() + 1) + "/" + (d.getDate()) + "/" + (d.getFullYear());
 
     postRequest("/api/addTask", {
             message : message,
