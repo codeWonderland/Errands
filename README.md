@@ -4,4 +4,4 @@ Errand is a productivity task manager application that works in tandem with a ra
 
 (Intro to Emerging Technology - Spring 2017)
 
-Site: http://codeWonderland.me:6789
+Site: 
